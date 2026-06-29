@@ -1,0 +1,318 @@
+/* Light Mode theme. Dark Mode remains the default visual system. */
+html[data-theme="light"] {
+  color-scheme: light;
+  --ink-0: #f4f8ff;
+  --ink-1: #eef5ff;
+  --ink-2: #e6f0fb;
+  --ink-3: #d8e8f5;
+  --ink-4: #c8ddea;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --panel-solid: #ffffff;
+  --panel-soft: rgba(5, 24, 40, 0.045);
+  --line: rgba(7, 87, 121, 0.16);
+  --line-bright: rgba(0, 169, 214, 0.36);
+  --line-hot: rgba(72, 190, 72, 0.34);
+  --text: #071521;
+  --text-soft: #24394c;
+  --muted: #64778b;
+  --muted-2: #8092a5;
+  --night-glow: 0 28px 80px rgba(27, 71, 105, 0.13);
+  --cyan-glow: 0 0 20px rgba(0, 177, 222, 0.18), 0 18px 48px rgba(41, 132, 255, 0.10);
+  --lime-glow: 0 0 18px rgba(94, 210, 80, 0.20), 0 14px 34px rgba(68, 177, 74, 0.10);
+  --inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.82), inset 0 -1px 0 rgba(0, 162, 210, 0.055);
+}
+html[data-theme="light"] body {
+  color: var(--text);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(0, 216, 255, 0.18), transparent 30rem),
+    radial-gradient(circle at 83% 10%, rgba(41, 132, 255, 0.13), transparent 32rem),
+    radial-gradient(circle at 70% 86%, rgba(124, 255, 79, 0.10), transparent 24rem),
+    linear-gradient(135deg, #f7fbff 0%, #eaf4ff 45%, #f7fff8 100%);
+}
+html[data-theme="light"] body::before {
+  opacity: 0.34;
+  background-image:
+    linear-gradient(120deg, rgba(0, 132, 180, 0.08) 0 1px, transparent 1px 180px),
+    linear-gradient(42deg, rgba(80, 176, 86, 0.07) 0 1px, transparent 1px 210px),
+    radial-gradient(circle at 20% 30%, rgba(0, 187, 231, 0.16), transparent 10rem),
+    radial-gradient(circle at 90% 78%, rgba(41, 132, 255, 0.12), transparent 14rem);
+}
+html[data-theme="light"] body::after {
+  opacity: 0.20;
+  background:
+    linear-gradient(135deg, transparent 0 68%, rgba(0, 148, 202, 0.16) 68.2% 68.7%, transparent 69%),
+    linear-gradient(25deg, transparent 0 72%, rgba(84, 197, 86, 0.10) 72.1% 72.45%, transparent 73%),
+    linear-gradient(165deg, transparent 0 64%, rgba(5, 26, 46, 0.055) 64.2% 64.45%, transparent 65%);
+  background-size: 420px 420px, 560px 560px, 380px 380px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.10));
+}
+html[data-theme="light"] .glass-card,
+html[data-theme="light"] .modal-card,
+html[data-theme="light"] .topbar,
+html[data-theme="light"] .mobile-appbar,
+html[data-theme="light"] .mobile-tabbar,
+html[data-theme="light"] .user-dropdown,
+html[data-theme="light"] .event-panel,
+html[data-theme="light"] .floating-event-preview,
+html[data-theme="light"] .navigation-hud,
+html[data-theme="light"] .nearby-carousel,
+html[data-theme="light"] .map-sidebar {
+  border-color: rgba(0, 129, 176, 0.18);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,255,255,.58) 38%, rgba(0,184,226,.075)),
+    rgba(255, 255, 255, 0.68);
+  box-shadow: 0 24px 70px rgba(30, 72, 101, 0.16), inset 0 1px 0 rgba(255,255,255,.86);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+html[data-theme="light"] .topbar,
+html[data-theme="light"] .mobile-appbar,
+html[data-theme="light"] .mobile-tabbar {
+  background: rgba(248, 252, 255, 0.82);
+  box-shadow: 0 18px 42px rgba(31, 76, 111, 0.10), inset 0 -1px 0 rgba(0, 150, 198, 0.12);
+}
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea {
+  color: #071521;
+  border-color: rgba(0, 128, 174, 0.20);
+  background: rgba(255,255,255,.78);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.86), 0 0 0 1px rgba(255,255,255,.45);
+}
+html[data-theme="light"] input:focus,
+html[data-theme="light"] select:focus,
+html[data-theme="light"] textarea:focus {
+  border-color: rgba(0, 183, 230, 0.55);
+  box-shadow: 0 0 0 3px rgba(0, 216, 255, 0.12), inset 0 1px 0 rgba(255,255,255,.9);
+}
+html[data-theme="light"] .secondary-btn,
+html[data-theme="light"] .icon-btn,
+html[data-theme="light"] #carouselSearchBtn,
+html[data-theme="light"] .emoji-picker-btn,
+html[data-theme="light"] .avatar-upload,
+html[data-theme="light"] .profile-tab,
+html[data-theme="light"] .plan-tabs button,
+html[data-theme="light"] .feed-tabs button,
+html[data-theme="light"] .social-profile-tabs button {
+  color: #153247;
+  border-color: rgba(0, 153, 204, 0.24);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.56) 42%, rgba(0,216,255,.055)),
+    rgba(255,255,255,.62);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.78), inset 0 -8px 16px rgba(30, 83, 113, .055), 0 0 14px rgba(0, 163, 210, .08);
+}
+html[data-theme="light"] .secondary-btn:hover,
+html[data-theme="light"] .icon-btn:hover,
+html[data-theme="light"] #carouselSearchBtn:hover,
+html[data-theme="light"] .emoji-picker-btn:hover,
+html[data-theme="light"] .avatar-upload:hover,
+html[data-theme="light"] .profile-tab:hover,
+html[data-theme="light"] .profile-tab.active,
+html[data-theme="light"] .plan-tabs button:hover,
+html[data-theme="light"] .plan-tabs button.active,
+html[data-theme="light"] .feed-tabs button:hover,
+html[data-theme="light"] .feed-tabs button.active,
+html[data-theme="light"] .social-profile-tabs button:hover,
+html[data-theme="light"] .social-profile-tabs button.active {
+  color: #061624;
+  border-color: rgba(0, 177, 222, 0.48);
+  background: rgba(0, 216, 255, 0.08);
+  box-shadow: 0 0 22px rgba(0, 177, 222, .16), inset 0 1px 0 rgba(255,255,255,.8);
+}
+html[data-theme="light"] .primary-btn,
+html[data-theme="light"] .search-this-area-btn,
+html[data-theme="light"] .standout-share,
+html[data-theme="light"] #buyBtn,
+html[data-theme="light"] .host-card-actions [data-follow-host],
+html[data-theme="light"] .social-profile-actions [data-follow-host] {
+  color: #073322 !important;
+  text-shadow: none !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18) inset,
+    0 0 28px rgba(79, 183, 86, .18),
+    0 0 18px rgba(0, 181, 222, .10),
+    inset 0 8px 14px rgba(255,255,255,.14),
+    inset 0 -12px 20px rgba(24, 86, 72, .09) !important;
+}
+html[data-theme="light"] .primary-btn:hover,
+html[data-theme="light"] .search-this-area-btn:hover,
+html[data-theme="light"] .standout-share:hover,
+html[data-theme="light"] #buyBtn:hover,
+html[data-theme="light"] .host-card-actions [data-follow-host]:hover,
+html[data-theme="light"] .social-profile-actions [data-follow-host]:hover {
+  color: #031f15 !important;
+  box-shadow:
+    0 0 36px rgba(79, 183, 86, .24),
+    0 0 22px rgba(0, 181, 222, .14),
+    inset 0 8px 14px rgba(255,255,255,.18),
+    inset 0 -12px 20px rgba(24, 86, 72, .10) !important;
+}
+html[data-theme="light"] .modal-backdrop { background: rgba(233, 244, 255, 0.64); backdrop-filter: blur(8px); }
+html[data-theme="light"] .maplibregl-ctrl-group { background: rgba(255,255,255,.86); box-shadow: 0 12px 28px rgba(42,72,94,.16); }
+html[data-theme="light"] .maplibregl-ctrl button { filter: none; }
+html[data-theme="light"] .event-card,
+html[data-theme="light"] .ticket-card,
+html[data-theme="light"] .feed-card,
+html[data-theme="light"] .social-user,
+html[data-theme="light"] .tier-option,
+html[data-theme="light"] .plan-widget,
+html[data-theme="light"] .profile-public-card,
+html[data-theme="light"] .host-profile-card {
+  border-color: rgba(0, 133, 180, .14);
+  background: rgba(255,255,255,.58);
+}
+html[data-theme="light"] .event-card:hover,
+html[data-theme="light"] .ticket-card:hover,
+html[data-theme="light"] .feed-card:hover,
+html[data-theme="light"] .nearby-card:hover {
+  border-color: rgba(0, 178, 225, .34);
+  box-shadow: 0 18px 48px rgba(22, 84, 120, .13), 0 0 24px rgba(0,216,255,.10);
+}
+html[data-theme="light"] .theme-preview-card {
+  display: grid;
+  gap: .7rem;
+  padding: .9rem;
+  border: 1px solid rgba(0, 153, 204, .18);
+  border-radius: 18px;
+  background: rgba(255,255,255,.48);
+}
+html[data-theme="light"] .theme-switch-row,
+.theme-switch-row {
+  display: grid;
+  gap: .5rem;
+}
+.theme-switch-copy {
+  margin: 0;
+  font-size: .86rem;
+  color: var(--muted);
+}
+
+
+/* Light Mode readability and host form polish. */
+.optional-copy {
+  color: var(--muted-2);
+  font-weight: 600;
+  font-size: .78em;
+}
+.location-builder {
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.35fr) auto;
+}
+.tier-row label {
+  grid-template-rows: 2.35rem auto;
+  align-content: start;
+}
+.tier-row label input {
+  align-self: start;
+}
+
+html[data-theme="light"] .brand-wordmark,
+html[data-theme="light"] .mobile-brand-wordmark {
+  content: url('/assets/gameplan-wordmark-darktext.png');
+}
+html[data-theme="dark"] .brand-wordmark,
+html[data-theme="dark"] .mobile-brand-wordmark {
+  content: url('/assets/gameplan-wordmark-regular.png');
+}
+html[data-theme="light"] .brand-icon,
+html[data-theme="light"] .mobile-brand-icon {
+  filter: drop-shadow(0 0 18px rgba(0,157,208,.28));
+}
+html[data-theme="light"] .brand-tagline {
+  color: #41566c;
+  border-left-color: rgba(0, 122, 170, .18);
+}
+html[data-theme="light"] .top-stats strong,
+html[data-theme="light"] .top-stats div strong,
+html[data-theme="light"] .page-header h1,
+html[data-theme="light"] .section-heading h1,
+html[data-theme="light"] .section-heading h2,
+html[data-theme="light"] .floating-event-preview h3,
+html[data-theme="light"] .event-card h3,
+html[data-theme="light"] .nearby-card b,
+html[data-theme="light"] .ticket-card h2,
+html[data-theme="light"] .social-card h2,
+html[data-theme="light"] .form-card h2 {
+  color: #061726;
+}
+html[data-theme="light"] .top-stats span,
+html[data-theme="light"] .muted-copy,
+html[data-theme="light"] small,
+html[data-theme="light"] .hint,
+html[data-theme="light"] .empty,
+html[data-theme="light"] .field-help {
+  color: #637589;
+}
+html[data-theme="light"] .nav {
+  background: rgba(255,255,255,.58);
+  border-color: rgba(0, 142, 194, .18);
+}
+html[data-theme="light"] .nav-link.active,
+html[data-theme="light"] .feed-tab.active,
+html[data-theme="light"] .plan-tab.active,
+html[data-theme="light"] .profile-tab.active,
+html[data-theme="light"] .pill.active,
+html[data-theme="light"] .secondary-btn.active {
+  color: #08341f;
+  border-color: rgba(89, 214, 86, .44);
+  background: linear-gradient(135deg, rgba(124,255,79,.20), rgba(0,216,255,.10));
+  box-shadow: inset 0 0 22px rgba(124,255,79,.10), 0 0 20px rgba(0,170,215,.10);
+}
+html[data-theme="light"] .route-map {
+  background: #edf6ff;
+}
+html[data-theme="light"] .route-map::before {
+  mix-blend-mode: multiply;
+  opacity: .34;
+  background:
+    radial-gradient(circle at 47% 45%, rgba(0,168,216,.15), transparent 24rem),
+    radial-gradient(circle at 68% 62%, rgba(124,255,79,.06), transparent 18rem),
+    linear-gradient(90deg, rgba(0,132,180,.045) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0,132,180,.035) 1px, transparent 1px);
+  background-size: auto, auto, 96px 96px, 96px 96px;
+}
+html[data-theme="light"] .route-map::after {
+  background:
+    linear-gradient(90deg, rgba(246,251,255,.28), transparent 22%, transparent 78%, rgba(246,251,255,.22)),
+    linear-gradient(0deg, rgba(246,251,255,.26), transparent 18%, transparent 82%, rgba(246,251,255,.16));
+  opacity: .58;
+}
+html[data-theme="light"] .main-map .maplibregl-canvas,
+html[data-theme="light"] .location-map .maplibregl-canvas {
+  filter: saturate(.94) contrast(.94) brightness(1.04);
+}
+html[data-theme="light"] .maplibregl-ctrl button .maplibregl-ctrl-icon {
+  filter: none;
+  opacity: .72;
+}
+html[data-theme="light"] .maplibregl-ctrl-attrib {
+  background: rgba(255,255,255,.72) !important;
+  color: #64778b !important;
+}
+html[data-theme="light"] .selected-location-status,
+html[data-theme="light"] .inline-error,
+html[data-theme="light"] .empty-preview,
+html[data-theme="light"] .toggle-row {
+  background: rgba(255,255,255,.56);
+  color: #53677c;
+  border-color: rgba(0, 135, 181, .16);
+}
+html[data-theme="light"] .emoji-picker {
+  background: rgba(255,255,255,.96);
+  border-color: rgba(0, 135, 181, .18);
+}
+html[data-theme="light"] .emoji-option {
+  background: rgba(4, 33, 54, .045);
+  border-color: rgba(0, 135, 181, .14);
+}
+html[data-theme="light"] .location-map {
+  background: #e8f3fb;
+  box-shadow: inset 0 0 34px rgba(0, 164, 214, .10), 0 18px 48px rgba(38, 81, 112, .12);
+}
+@media (max-width: 900px) {
+  .location-builder {
+    grid-template-columns: 1fr;
+  }
+  .tier-row label {
+    grid-template-rows: auto auto;
+  }
+}

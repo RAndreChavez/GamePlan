@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#02050b" />
+  <title>GamePlan | Make plans like it's a game</title>
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://a.basemaps.cartocdn.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" />
+  <link rel="icon" type="image/png" href="/assets/gameplan-icon-notitle.png" />
+  <script>document.documentElement.dataset.theme = localStorage.getItem('gp_theme') || 'dark';</script>
+  <link rel="stylesheet" href="/styles.css?v=1.2.0" />
+</head>
+<body>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <header class="topbar">
+    <a class="brand brand-official" href="#map" data-route="map" aria-label="GamePlan Home">
+      <img class="brand-icon" src="/assets/gameplan-icon-notitle.png" alt="" aria-hidden="true" />
+      <img class="brand-wordmark" src="/assets/gameplan-wordmark-regular.png" alt="GamePlan" />
+      <span class="brand-tagline">MAKE PLANS LIKE IT'S A GAME</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="nav-link active" data-route="map" type="button">Map</button>
+      <button class="nav-link" data-route="host" type="button">Host</button>
+      <button class="nav-link" data-route="tickets" type="button">Plans</button>
+      <button class="nav-link" data-route="social" type="button">Social</button>
+    </nav>
+    <div class="topbar-right">
+      <div id="topStats" class="top-stats" aria-label="GamePlan user statistics"></div>
+      <div id="sessionArea" class="session-area"></div>
+    </div>
+  </header>
+
+  <header id="mobileAppbar" class="mobile-appbar" aria-label="GamePlan mobile header">
+    <a class="mobile-brand mobile-brand-lockup" href="#map" data-route="map" aria-label="GamePlan Home">
+      <img class="mobile-brand-icon" src="/assets/gameplan-icon-notitle.png" alt="" aria-hidden="true" />
+      <img class="mobile-brand-wordmark" src="/assets/gameplan-wordmark-regular.png" alt="GamePlan" />
+    </a>
+    <div class="mobile-title-group">
+      <strong id="mobileScreenTitle">Map</strong>
+      <span id="mobileScreenSubtitle">Discover nearby plans</span>
+    </div>
+    <button id="mobileFilterBtn" class="mobile-filter-btn" type="button" aria-controls="route-map" aria-expanded="false">Filters</button>
+    <div id="mobileSessionShortcut" class="mobile-session-shortcut"></div>
+  </header>
+
+  <nav id="mobileTabbar" class="mobile-tabbar" aria-label="Mobile navigation">
+    <button class="mobile-nav-link active" data-route="map" type="button"><span>🗺️</span><b>Map</b></button>
+    <button class="mobile-nav-link" data-route="tickets" type="button"><span>🎟️</span><b>Plans</b></button>
+    <button class="mobile-nav-link" data-route="social" type="button"><span>👥</span><b>Social</b></button>
+    <button class="mobile-nav-link" data-route="host" type="button"><span>📍</span><b>Host</b></button>
+    <button id="mobileProfileNavBtn" class="mobile-nav-link mobile-account-link" type="button"><span>👤</span><b>Profile</b></button>
+  </nav>
+
+
+  <main>
+    <section id="route-map" class="route route-map active">
+      <aside class="map-sidebar glass-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Live discovery</p>
+            <h1>Plans around you</h1>
+          </div>
+          <button id="locateBtn" class="icon-btn" type="button" title="Use my location">⌖</button>
+        </div>
+        <div class="search-row discovery-controls">
+          <input id="searchInput" type="search" placeholder="Search events, categories, places..." autocomplete="off" />
+          <div class="mode-toggle" role="group" aria-label="Search area mode">
+            <button id="nearMeMode" class="pill active" type="button">Near me</button>
+            <button id="cityMode" class="pill" type="button">City / ZIP</button>
+          </div>
+          <div id="citySearchBox" class="city-search hidden">
+            <input id="citySearchInput" type="search" placeholder="Search city or ZIP, example: Fayetteville 72701" autocomplete="off" />
+            <button id="citySearchBtn" class="secondary-btn small" type="button">Search area</button>
+          </div>
+          <label class="range-label full-width-filter">Search radius <span id="radiusValue">25 miles</span>
+            <input id="radiusSelect" type="range" min="1" max="250" step="1" value="25" />
+          </label>
+          <label class="range-label full-width-filter">Max price <span id="priceValue">Any price</span>
+            <input id="priceFilter" type="range" min="0" max="250" step="5" value="250" />
+          </label>
+          <div class="filter-grid reordered-filters">
+            <div class="time-range-filter span-2">
+              <span>Time range</span>
+              <div class="time-range-row">
+                <label>From<input id="timeStartFilter" type="datetime-local" /></label>
+                <label>To<input id="timeEndFilter" type="datetime-local" /></label>
+              </div>
+            </div>
+            <label>Category
+              <select id="categoryFilter">
+                <option value="all">All categories</option>
+                <option>Nightlife</option><option>Music</option><option>Food</option><option>Sports</option><option>Art</option><option>Study</option><option>Gaming</option><option>Community</option>
+              </select>
+            </label>
+            <label>Sort
+              <select id="sortSelect">
+                <option value="soonest">Soonest first</option>
+                <option value="distance">Nearest first</option>
+                <option value="priceLow">Lowest price</option>
+                <option value="priceHigh">Highest price</option>
+                <option value="popular">Most popular</option>
+                <option value="capacity">Most availability</option>
+              </select>
+            </label>
+          </div>
+          <button id="mapSearchBtn" class="primary-btn full" type="button">Search plans</button>
+        </div>
+        <div id="eventList" class="event-list hidden"></div>
+      </aside>
+      <div id="map" class="main-map" aria-label="Event discovery map"></div>
+      <button id="searchThisAreaBtn" class="search-this-area-btn" type="button">Search this area</button>
+      <section id="nearbyCarousel" class="nearby-carousel glass-card" aria-label="Nearby events carousel"></section>
+      <aside id="navigationHud" class="navigation-hud glass-card hidden" aria-live="polite"></aside>
+      <aside id="eventPreviewCard" class="floating-event-preview glass-card hidden"></aside>
+      <aside id="eventPanel" class="event-panel glass-card hidden" aria-live="polite"></aside>
+    </section>
+
+    <section id="route-host" class="route page-shell">
+      <div class="page-header">
+        <p class="eyebrow">Host tools</p>
+        <h1>Create a plan that appears on the map</h1>
+        <p>Search an address or zip code, click the map to place the event, upload a full carousel, and create multiple ticket tiers.</p>
+      </div>
+      <div class="host-layout">
+        <form id="eventForm" class="glass-card form-card" enctype="multipart/form-data">
+          <div class="form-grid">
+            <label>Event title<input name="title" required minlength="3" maxlength="80" placeholder="Sunset Rooftop Session" /></label>
+            <label>Category
+              <select name="category" required>
+                <option>Nightlife</option><option>Music</option><option>Food</option><option>Sports</option><option>Art</option><option>Study</option><option>Gaming</option><option>Community</option>
+              </select>
+            </label>
+            <label class="span-2">Description<textarea name="description" required minlength="10" maxlength="1400" placeholder="Tell guests what is happening, what is included, and what to expect."></textarea></label>
+            <label>Start date/time<input name="startsAt" required type="datetime-local" /></label>
+            <label>End date/time<input name="endsAt" type="datetime-local" /></label>
+            <label>Age restriction
+              <select name="ageRestriction" required>
+                <option value="All ages">All ages</option>
+                <option value="18+">18+</option>
+                <option value="21+">21+</option>
+              </select>
+            </label>
+            <label>Visibility
+              <select name="visibility" required>
+                <option value="public">Public map</option>
+                <option value="friends_only">Friends only</option>
+                <option value="link_only">Link only</option>
+                <option value="private">Private invite only</option>
+              </select>
+            </label>
+            <div class="pin-emoji-field">
+              <span>Map pin emoji</span>
+              <input id="markerEmojiInput" name="markerEmoji" type="hidden" value="🎸" />
+              <button id="emojiPickerBtn" class="emoji-picker-btn" type="button" aria-expanded="false"><span id="selectedEmojiPreview">🎸</span><b>Choose icon</b></button>
+              <div id="emojiPicker" class="emoji-picker hidden" role="listbox" aria-label="Choose event pin emoji"></div>
+            </div>
+            <label class="pin-color-field">Map pin color
+              <div class="color-control"><input id="markerColorInput" name="markerColor" type="color" value="#7CFF4F" /><span id="markerColorPreview" class="color-preview" style="--picked:#7CFF4F"></span><strong id="markerColorText">#7CFF4F</strong></div>
+            </label>
+            <label class="toggle-row span-2"><input name="showTicketAvailability" type="checkbox" checked /> Show ticket availability on event profile</label>
+            <div class="span-2 image-upload-block">
+              <label>Add event pictures
+                <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple />
+                <small class="field-help">Add images in batches. Reorder them, remove individual thumbnails, and choose how the carousel appears. Maximum 8 images.</small>
+              </label>
+              <div id="imagePreview" class="image-preview-grid"><div class="empty-preview">No pictures selected yet. Default GamePlan artwork will be used.</div></div>
+            </div>
+          </div>
+
+          <div class="location-builder">
+            <div>
+              <label>Location name <span class="optional-copy">optional</span><input id="locationNameInput" name="locationName" placeholder="Venue or place name, for example a store, stadium, or campus building" /></label>
+            </div>
+            <div>
+              <label>Address<input id="addressInput" name="address" required placeholder="100 W Center St Suite 200, Fayetteville, AR 72701" /></label>
+            </div>
+            <button id="addressSearchBtn" class="secondary-btn" type="button">Focus map</button>
+            <input id="latInput" name="lat" type="hidden" required />
+            <input id="lngInput" name="lng" type="hidden" required />
+          </div>
+          <p class="hint">Click the map to choose the exact event location. The selected event pin appears immediately so the host can confirm the spot.</p>
+          <div id="selectedLocationStatus" class="selected-location-status">No exact event location selected yet.</div>
+          <div id="eventLocationMap" class="location-map"></div>
+
+          <div class="tier-header">
+            <div><h2>Ticket tiers</h2></div>
+            <button id="addTierBtn" class="secondary-btn" type="button">+ Add tier</button>
+          </div>
+          <div id="tierList" class="tier-list"></div>
+
+          <button class="primary-btn full" type="submit">Publish event</button>
+        </form>
+
+        <div class="glass-card host-dashboard">
+          <div class="section-heading compact"><div><p class="eyebrow">Attendees</p><h2>Your hosted events</h2></div></div>
+          <div id="hostEvents"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="route-tickets" class="route page-shell">
+      <div class="page-header"><p class="eyebrow">Plan wallet</p><h1>Your plans, saved events, and activity</h1><p>Track upcoming plans, save events for later, and review previous attended events.</p></div>
+      <div id="plansOverview" class="plans-overview"></div>
+      <div class="plan-tabs" role="tablist" aria-label="Plan wallet sections">
+        <button class="plan-tab active" data-plan-tab="upcoming" type="button">Upcoming</button>
+        <button class="plan-tab" data-plan-tab="saved" type="button">Saved</button>
+        <button class="plan-tab" data-plan-tab="activity" type="button">Activity</button>
+      </div>
+      <div id="ticketsList" class="ticket-grid plan-section active" data-plan-section="upcoming"></div>
+      <div id="savedList" class="ticket-grid plan-section" data-plan-section="saved"></div>
+      <div id="activityList" class="ticket-grid plan-section" data-plan-section="activity"></div>
+    </section>
+
+    <section id="route-social" class="route page-shell social-shell">
+      <div class="page-header"><p class="eyebrow">Social layer</p><h1>Your event network</h1><p>A modern feed for event activity, friends, requests, reactions, comments, sharing, and privacy-aware profile activity.</p></div>
+      <div class="social-layout">
+        <aside class="social-left rail-stack">
+          <article class="glass-card social-card compact-card">
+            <h2>Friend requests</h2>
+            <div id="friendRequestsList" class="social-list"></div>
+          </article>
+          <article class="glass-card social-card compact-card">
+            <h2>Find people</h2>
+            <div class="social-search-row">
+              <input id="userSearchInput" type="search" placeholder="Search name or email" autocomplete="off" />
+              <button id="userSearchBtn" class="secondary-btn" type="button">Search</button>
+            </div>
+            <div id="userSearchResults" class="social-list"></div>
+          </article>
+        </aside>
+
+        <section class="social-feed-column">
+          <article class="glass-card composer-card">
+            <div class="composer-head">
+              <img id="composerAvatar" src="/assets/gameplan-default.png" alt="Your avatar" />
+              <div><strong id="composerName">GamePlan user</strong><small>Post an update for friends or the community</small></div>
+            </div>
+            <textarea id="feedPostInput" placeholder="Share a plan, memory, or event update..."></textarea>
+            <div class="composer-actions">
+              <select id="feedVisibility">
+                <option value="friends_only">Friends only</option>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+              <button id="postFeedBtn" class="primary-btn" type="button">Post</button>
+            </div>
+          </article>
+
+          <article id="socialProfilePanel" class="glass-card social-profile-window hidden" aria-live="polite"></article>
+          <div class="feed-tabs" role="tablist" aria-label="Social feed categories"><button class="feed-tab active" data-feed-mode="friends" type="button">Friends</button><button class="feed-tab" data-feed-mode="forYou" type="button">For You</button><button class="feed-tab" data-feed-mode="nearMe" type="button">Near me</button></div><div id="socialFeed" class="feed-list"></div>
+        </section>
+
+        <aside class="social-right rail-stack">
+          <article class="glass-card social-card compact-card">
+            <h2>Your friends</h2>
+            <div id="friendsList" class="social-list"></div>
+          </article>
+          <article class="glass-card social-card compact-card">
+            <h2>Friend event activity</h2>
+            <div id="friendActivity" class="social-list"></div>
+          </article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="imageModal" class="modal hidden" aria-modal="true" role="dialog" aria-label="Event image gallery">
+    <div class="modal-backdrop" data-close-image></div>
+    <div class="image-modal-card glass-card">
+      <button class="modal-close" data-close-image type="button" aria-label="Close">×</button>
+      <button id="galleryPrev" class="gallery-btn prev" type="button" aria-label="Previous image">‹</button>
+      <img id="galleryImage" src="" alt="Expanded event image" />
+      <button id="galleryNext" class="gallery-btn next" type="button" aria-label="Next image">›</button>
+      <div id="galleryCounter" class="gallery-counter"></div>
+    </div>
+  </div>
+
+  <div id="shareTicketModal" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="shareTicketTitle">
+    <div class="modal-backdrop" data-close-share-ticket></div>
+    <form id="shareTicketForm" class="modal-card glass-card share-ticket-card">
+      <button class="modal-close" data-close-share-ticket type="button" aria-label="Close">×</button>
+      <p class="eyebrow">Share activity</p>
+      <h2 id="shareTicketTitle">Share this plan to your feed</h2>
+      <div id="shareTicketPreview" class="shared-plan-preview"></div>
+      <label>Who can see this post?
+        <select name="visibility">
+          <option value="friends_only">Friends only</option>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+        </select>
+      </label>
+      <label>Reaction
+        <select name="reaction">
+          <option value="">No reaction</option>
+          <option value="🔥">🔥 Hyped</option>
+          <option value="🎟️">🎟️ Going</option>
+          <option value="✨">✨ Excited</option>
+          <option value="👀">👀 Who else is going?</option>
+        </select>
+      </label>
+      <label>Post text<textarea name="text" maxlength="600" required placeholder="Add a comment before sharing this plan..."></textarea></label>
+      <button class="primary-btn full standout-share" type="submit">Share activity</button>
+    </form>
+  </div>
+
+  <div id="authModal" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="authTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <form id="authForm" class="modal-card glass-card auth-form-card" novalidate>
+      <button class="modal-close" data-close-modal type="button" aria-label="Close">×</button>
+      <p class="eyebrow" id="authModeLabel">Account access</p>
+      <h2 id="authTitle">Log in to GamePlan</h2>
+      <div id="authError" class="inline-error hidden"></div>
+      <label class="auth-name-field hidden">Name<input name="name" autocomplete="name" /></label>
+      <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+      <label>Password<input name="password" type="password" required autocomplete="current-password" minlength="8" /></label>
+      <label class="auth-role-field hidden">Account type
+        <select name="role"><option value="both">Both</option><option value="guest">Guest</option><option value="host">Host</option></select>
+      </label>
+      <button id="authSubmit" class="primary-btn full" type="submit">Log in</button>
+      <button id="switchAuth" class="link-btn" type="button">Need an account? Create one</button>
+    </form>
+  </div>
+
+  <div id="profileModal" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="profileTitle">
+    <div class="modal-backdrop" data-close-profile></div>
+    <form id="profileForm" class="modal-card glass-card profile-modal-card" enctype="multipart/form-data">
+      <button class="modal-close" data-close-profile type="button" aria-label="Close">×</button>
+      <p class="eyebrow">Account center</p>
+      <h2 id="profileTitle">Profile</h2>
+      <div class="profile-tabs" role="tablist" aria-label="Account center sections">
+        <button type="button" class="profile-tab active" data-profile-tab="edit">Edit profile</button>
+        <button type="button" class="profile-tab" data-profile-tab="privacy">Privacy</button>
+        <button type="button" class="profile-tab" data-profile-tab="account">Account</button>
+      </div>
+      <section class="profile-section active" data-section="edit">
+        <div class="profile-editor-grid">
+          <div class="banner-editor span-2">
+            <div id="bannerPreview" class="banner-preview" aria-label="Profile banner preview"></div>
+            <label class="avatar-upload banner-upload">Update profile banner<input id="bannerInput" name="banner" type="file" accept="image/png,image/jpeg,image/webp,image/gif" /></label>
+          </div>
+          <div class="avatar-editor">
+            <img id="avatarPreview" src="/assets/gameplan-default.png" alt="Profile picture preview" />
+            <label class="avatar-upload">Update profile picture<input id="avatarInput" name="avatar" type="file" accept="image/png,image/jpeg,image/webp,image/gif" /></label>
+          </div>
+          <div class="settings-grid">
+            <label>Map user locator color<input name="locatorColor" type="color" value="#00d8ff" /></label>
+            <label>Display name<input name="name" maxlength="60" required /></label>
+            <label>Role
+              <select name="role"><option value="both">Both</option><option value="guest">Guest</option><option value="host">Host</option></select>
+            </label>
+            <label class="span-2">Bio<textarea name="bio" maxlength="280" placeholder="Tell people what kind of plans you like."></textarea></label>
+            <label>Location<input name="location" maxlength="80" placeholder="Fayetteville, AR" /></label>
+            <label>Website<input name="website" maxlength="160" placeholder="https://your-site.com" /></label>
+          </div>
+        </div>
+      </section>
+      <section class="profile-section" data-section="privacy">
+        <div class="settings-grid">
+          <label>Profile visibility
+            <select name="profileVisibility"><option value="public">Public</option><option value="friends_only">Friends only</option><option value="private">Private</option></select>
+          </label>
+          <label>Activity visibility
+            <select name="activityVisibility"><option value="public">Public</option><option value="friends_only">Friends only</option><option value="private">Private</option></select>
+          </label>
+          <label>Event history visibility
+            <select name="eventsVisibility"><option value="public">Public</option><option value="friends_only">Friends only</option><option value="private">Private</option></select>
+          </label>
+        </div>
+        <p class="hint privacy-note">These settings control whether your profile, posts, and attended plan history are visible publicly, to friends only, or private.</p>
+      </section>
+      <section class="profile-section" data-section="account">
+        <div class="settings-grid account-settings-form">
+          <label>Default post privacy
+            <select name="defaultPostVisibility"><option value="friends_only">Friends only</option><option value="public">Public</option><option value="private">Private</option></select>
+          </label>
+          <label>Appearance
+            <select id="themePreferenceSelect" name="themePreference"><option value="dark">Dark mode</option><option value="light">Light mode</option></select>
+          </label>
+        </div>
+        <div id="accountSettingsPanel" class="account-settings-panel"></div>
+      </section>
+      <button id="profileSaveBtn" class="primary-btn full" type="submit">Save profile settings</button>
+    </form>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script defer src="/js/01-config.js?v=1.2.0"></script>
+  <script defer src="/js/02-state-utils.js?v=1.2.0"></script>
+  <script defer src="/js/03-app-shell.js?v=1.2.0"></script>
+  <script defer src="/js/04-map-navigation.js?v=1.2.0"></script>
+  <script defer src="/js/05-host-tools.js?v=1.2.0"></script>
+  <script defer src="/js/06-plans-social-profile.js?v=1.2.0"></script>
+  <script defer src="/js/07-dialogs-gallery.js?v=1.2.0"></script>
+  <script defer src="/js/08-init.js?v=1.2.0"></script>
+</body>
+</html>

@@ -1,0 +1,792 @@
+/* Button geometry and core color treatments. */
+:root {
+  --gp-shape-hex: polygon(24% 7%, 76% 7%, 100% 50%, 76% 93%, 24% 93%, 0 50%);
+  --gp-shape-oct: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
+  --gp-shape-deca: polygon(18px 0, calc(100% - 18px) 0, 100% 10px, 100% 35%, 100% calc(100% - 10px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 10px), 0 35%, 0 10px);
+}
+
+/* Regular button geometry. */
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+.secondary-btn,
+.emoji-picker-btn,
+.avatar-upload,
+#carouselSearchBtn,
+#userSearchBtn,
+#addressSearchBtn,
+#addTierBtn,
+.mobile-filter-btn,
+.mobile-account-btn,
+.host-card-actions button,
+.social-profile-actions button,
+.feed-actions button,
+.event-share-row button,
+.reaction-btn,
+.profile-back-btn {
+  clip-path: var(--gp-shape-oct) !important;
+}
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#buyBtn,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event],
+[data-save-event] {
+  --cta-shape: var(--gp-shape-deca) !important;
+  clip-path: var(--gp-shape-deca) !important;
+}
+.icon-btn,
+.save-event-btn,
+.remove-tier,
+.gallery-btn,
+.floating-preview-close,
+.mobile-account-btn.avatar-only {
+  clip-path: var(--gp-shape-hex) !important;
+}
+.primary-btn.small,
+.secondary-btn.small,
+#citySearchBtn,
+#loginBtn,
+#mobileLoginBtn,
+#emojiPickerBtn,
+#mobileFilterBtn,
+#carouselSearchBtn,
+#userSearchBtn,
+#addressSearchBtn,
+#addTierBtn,
+.floating-preview-actions button,
+.host-card-actions button {
+  clip-path: var(--gp-shape-oct) !important;
+}
+
+/* Cyan buttons: focus map, add tier, save buttons, locate, view results, profile, find-people search */
+#locateBtn,
+#carouselSearchBtn,
+#userSearchBtn,
+#addressSearchBtn,
+#addTierBtn,
+.save-event-btn,
+#saveEventBtn,
+[data-toggle-save],
+.floating-preview-actions [data-toggle-save],
+.host-card-actions [data-view-host-profile] {
+  color: #eaf9ff !important;
+  border-color: rgba(0,216,255,.66) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.16), transparent 24%),
+    linear-gradient(218deg, rgba(255,255,255,.07) 0 22%, transparent 22% 100%),
+    linear-gradient(42deg, rgba(255,255,255,.08) 0 14%, transparent 14% 40%, rgba(0,216,255,.15) 40% 70%, transparent 70% 100%),
+    linear-gradient(145deg, rgba(14,47,72,.80), rgba(8,30,52,.74) 46%, rgba(0,216,255,.28) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 28px rgba(0,216,255,.24),
+    inset 0 8px 14px rgba(255,255,255,.065),
+    inset 0 -10px 16px rgba(0,0,0,.18) !important;
+}
+#locateBtn:hover,
+#carouselSearchBtn:hover,
+#userSearchBtn:hover,
+#addressSearchBtn:hover,
+#addTierBtn:hover,
+.save-event-btn:hover,
+#saveEventBtn:hover,
+[data-toggle-save]:hover,
+[data-toggle-save].active,
+.host-card-actions [data-view-host-profile]:hover {
+  color: white !important;
+  border-color: rgba(0,216,255,.82) !important;
+  box-shadow:
+    0 0 34px rgba(0,216,255,.34),
+    0 0 0 1px rgba(255,255,255,.14) inset,
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -10px 16px rgba(0,0,0,.20) !important;
+}
+
+/* Green buttons: follow and reserve/buy ticket */
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  color: #041108 !important;
+  border-color: rgba(124,255,79,.80) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.22), transparent 22%),
+    linear-gradient(35deg, rgba(255,255,255,.09) 0 18%, transparent 18% 100%),
+    linear-gradient(145deg, rgba(124,255,79,.86), rgba(90,244,116,.78) 44%, rgba(86,239,199,.58) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.13) inset,
+    0 0 34px rgba(124,255,79,.30),
+    0 0 22px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.11),
+    inset 0 -12px 18px rgba(0,0,0,.16) !important;
+}
+#buyBtn:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  box-shadow:
+    0 0 42px rgba(124,255,79,.42),
+    0 0 24px rgba(0,216,255,.14),
+    inset 0 8px 14px rgba(255,255,255,.12),
+    inset 0 -12px 18px rgba(0,0,0,.17) !important;
+}
+
+/* Red buttons: ticket tier remove */
+.remove-tier {
+  color: #ffd7de !important;
+  border-color: rgba(255,77,109,.62) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), transparent 24%),
+    linear-gradient(145deg, rgba(69,10,22,.86), rgba(96,13,30,.76) 60%, rgba(255,77,109,.24) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.09) inset,
+    0 0 26px rgba(255,77,109,.24),
+    inset 0 6px 10px rgba(255,255,255,.045),
+    inset 0 -8px 14px rgba(0,0,0,.20) !important;
+}
+.remove-tier:hover {
+  color: white !important;
+  border-color: rgba(255,77,109,.82) !important;
+  box-shadow: 0 0 34px rgba(255,77,109,.34), inset 0 0 0 1px rgba(255,255,255,.12) !important;
+}
+
+
+
+/* Button glow and interaction polish. */
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+.secondary-btn,
+.emoji-picker-btn,
+.avatar-upload,
+#carouselSearchBtn,
+#userSearchBtn,
+#addressSearchBtn,
+#addTierBtn,
+.mobile-filter-btn,
+.mobile-account-btn,
+.host-card-actions button,
+.social-profile-actions button,
+.feed-actions button,
+.event-share-row button,
+.reaction-btn,
+.profile-back-btn,
+.icon-btn,
+.save-event-btn,
+.remove-tier,
+.gallery-btn,
+.floating-preview-close,
+.modal-close,
+.panel-close,
+.thumb-remove,
+.floating-preview-actions button,
+#stopNavigationBtn {
+  --edge-color: rgba(0,216,255,.62);
+  filter:
+    drop-shadow(0 0 .8px var(--edge-color))
+    drop-shadow(0 0 3px color-mix(in srgb, var(--edge-color), transparent 52%));
+}
+.primary-btn:hover,
+.search-this-area-btn:hover,
+.standout-share:hover,
+.secondary-btn:hover,
+.emoji-picker-btn:hover,
+.avatar-upload:hover,
+#carouselSearchBtn:hover,
+#userSearchBtn:hover,
+#addressSearchBtn:hover,
+#addTierBtn:hover,
+.mobile-filter-btn:hover,
+.mobile-account-btn:hover,
+.host-card-actions button:hover,
+.social-profile-actions button:hover,
+.feed-actions button:hover,
+.event-share-row button:hover,
+.reaction-btn:hover,
+.profile-back-btn:hover,
+.icon-btn:hover,
+.save-event-btn:hover,
+.remove-tier:hover,
+.gallery-btn:hover,
+.floating-preview-close:hover,
+.modal-close:hover,
+.panel-close:hover,
+.thumb-remove:hover,
+.floating-preview-actions button:hover,
+#stopNavigationBtn:hover {
+  filter:
+    drop-shadow(0 0 1.1px var(--edge-color))
+    drop-shadow(0 0 7px color-mix(in srgb, var(--edge-color), transparent 30%));
+}
+
+/* Cyan: choose icon + locate/focus map + view results + save buttons */
+#emojiPickerBtn,
+#locateBtn,
+#carouselSearchBtn,
+#userSearchBtn,
+#addressSearchBtn,
+#addTierBtn,
+.save-event-btn,
+#saveEventBtn,
+[data-toggle-save],
+.floating-preview-actions [data-toggle-save],
+.host-card-actions [data-view-host-profile] {
+  --edge-color: rgba(0,216,255,.86);
+  color: #eaf9ff !important;
+  border-color: rgba(0,216,255,.66) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.16), transparent 24%),
+    linear-gradient(218deg, rgba(255,255,255,.07) 0 22%, transparent 22% 100%),
+    linear-gradient(42deg, rgba(255,255,255,.08) 0 14%, transparent 14% 40%, rgba(0,216,255,.15) 40% 70%, transparent 70% 100%),
+    linear-gradient(145deg, rgba(14,47,72,.80), rgba(8,30,52,.74) 46%, rgba(0,216,255,.28) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 28px rgba(0,216,255,.24),
+    inset 0 8px 14px rgba(255,255,255,.065),
+    inset 0 -10px 16px rgba(0,0,0,.18) !important;
+}
+#emojiPickerBtn:hover,
+#locateBtn:hover,
+#carouselSearchBtn:hover,
+#userSearchBtn:hover,
+#addressSearchBtn:hover,
+#addTierBtn:hover,
+.save-event-btn:hover,
+#saveEventBtn:hover,
+[data-toggle-save]:hover,
+[data-toggle-save].active,
+.host-card-actions [data-view-host-profile]:hover {
+  color: white !important;
+  border-color: rgba(0,216,255,.82) !important;
+}
+
+/* Green: reserve / buy ticket and follow */
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  --edge-color: rgba(124,255,79,.90);
+  color: #041108 !important;
+  border-color: rgba(124,255,79,.80) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.22), transparent 22%),
+    linear-gradient(35deg, rgba(255,255,255,.09) 0 18%, transparent 18% 100%),
+    linear-gradient(145deg, rgba(124,255,79,.86), rgba(90,244,116,.78) 44%, rgba(86,239,199,.58) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.13) inset,
+    0 0 34px rgba(124,255,79,.30),
+    0 0 22px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.11),
+    inset 0 -12px 18px rgba(0,0,0,.16) !important;
+}
+
+/* All X buttons red */
+.modal-close,
+.panel-close,
+.floating-preview-close,
+.thumb-remove,
+.remove-tier,
+#stopNavigationBtn {
+  --edge-color: rgba(255,77,109,.92);
+  color: #ffe4ea !important;
+  clip-path: var(--gp-shape-oct) !important;
+  border-color: rgba(255,77,109,.62) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), transparent 24%),
+    linear-gradient(145deg, rgba(69,10,22,.88), rgba(96,13,30,.78) 60%, rgba(255,77,109,.26) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08) inset,
+    0 0 24px rgba(255,77,109,.22),
+    inset 0 6px 10px rgba(255,255,255,.04),
+    inset 0 -8px 14px rgba(0,0,0,.22) !important;
+}
+.modal-close:hover,
+.panel-close:hover,
+.floating-preview-close:hover,
+.thumb-remove:hover,
+.remove-tier:hover,
+#stopNavigationBtn:hover {
+  color: #fff !important;
+  border-color: rgba(255,77,109,.82) !important;
+}
+
+
+/* Soft hologram fill treatment. */
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event] {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.24), transparent 22%),
+    linear-gradient(212deg, rgba(255,255,255,.08) 0 18%, transparent 18% 100%),
+    linear-gradient(38deg, rgba(0,216,255,.10) 0 12%, transparent 12% 34%, rgba(255,255,255,.07) 34% 36%, transparent 36% 58%, rgba(103,251,187,.11) 58% 76%, transparent 76% 100%),
+    linear-gradient(127deg, rgba(255,255,255,.05) 0 26%, transparent 26% 54%, rgba(137,255,99,.06) 54% 74%, transparent 74% 100%),
+    linear-gradient(145deg, rgba(157,255,77,.74) 0%, rgba(114,247,89,.68) 34%, rgba(132,251,131,.62) 48%, rgba(86,239,199,.56) 72%, rgba(99,218,248,.52) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14) inset,
+    0 0 24px rgba(124,255,79,.20),
+    0 0 16px rgba(0,216,255,.10),
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -12px 20px rgba(0,0,0,.16) !important;
+}
+.primary-btn:hover,
+.search-this-area-btn:hover,
+.standout-share:hover,
+#profileSaveBtn:hover,
+.navigation-cta:hover,
+.share-activity-btn:hover,
+[data-open-saved-event]:hover {
+  box-shadow:
+    0 0 30px rgba(124,255,79,.28),
+    0 0 18px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.10),
+    inset 0 -12px 20px rgba(0,0,0,.16) !important;
+}
+
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), transparent 22%),
+    linear-gradient(35deg, rgba(255,255,255,.07) 0 18%, transparent 18% 100%),
+    linear-gradient(145deg, rgba(124,255,79,.72), rgba(90,244,116,.64) 44%, rgba(86,239,199,.46) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12) inset,
+    0 0 26px rgba(124,255,79,.22),
+    0 0 16px rgba(0,216,255,.08),
+    inset 0 8px 14px rgba(255,255,255,.09),
+    inset 0 -12px 18px rgba(0,0,0,.17) !important;
+}
+#buyBtn:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  box-shadow:
+    0 0 34px rgba(124,255,79,.30),
+    0 0 18px rgba(0,216,255,.10),
+    inset 0 8px 14px rgba(255,255,255,.10),
+    inset 0 -12px 18px rgba(0,0,0,.17) !important;
+}
+
+
+/* Button shape, opacity, glow, and hover behavior. */
+#loginBtn,
+#mobileLoginBtn,
+.floating-preview-actions [data-floating-open],
+.floating-preview-actions [data-floating-go] {
+  clip-path: var(--gp-shape-deca) !important;
+}
+
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event] {
+  --edge-color: rgba(148,255,121,.92);
+  color: #f4fffb !important;
+  text-shadow: 0 0 10px rgba(124,255,79,.22), 0 0 12px rgba(0,216,255,.08);
+  border-color: rgba(142,255,113,.72) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.20), transparent 22%),
+    linear-gradient(212deg, rgba(255,255,255,.06) 0 18%, transparent 18% 100%),
+    linear-gradient(38deg, rgba(0,216,255,.08) 0 12%, transparent 12% 34%, rgba(255,255,255,.05) 34% 36%, transparent 36% 58%, rgba(103,251,187,.09) 58% 76%, transparent 76% 100%),
+    linear-gradient(127deg, rgba(255,255,255,.04) 0 26%, transparent 26% 54%, rgba(137,255,99,.05) 54% 74%, transparent 74% 100%),
+    linear-gradient(145deg, rgba(157,255,77,.64) 0%, rgba(114,247,89,.58) 34%, rgba(132,251,131,.53) 48%, rgba(86,239,199,.47) 72%, rgba(99,218,248,.42) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12) inset,
+    0 0 28px rgba(124,255,79,.24),
+    0 0 18px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.07),
+    inset 0 -12px 20px rgba(0,0,0,.18) !important;
+}
+.primary-btn:hover,
+.search-this-area-btn:hover,
+.standout-share:hover,
+#profileSaveBtn:hover,
+.navigation-cta:hover,
+.share-activity-btn:hover,
+[data-open-saved-event]:hover {
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 38px rgba(124,255,79,.32),
+    0 0 22px rgba(0,216,255,.14),
+    inset 0 8px 14px rgba(255,255,255,.09),
+    inset 0 -12px 20px rgba(0,0,0,.18) !important;
+}
+
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  --edge-color: rgba(144,255,112,.95);
+  color: #f5fffb !important;
+  text-shadow: 0 0 10px rgba(124,255,79,.24), 0 0 12px rgba(0,216,255,.08);
+  border-color: rgba(146,255,118,.76) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.16), transparent 22%),
+    linear-gradient(35deg, rgba(255,255,255,.06) 0 18%, transparent 18% 100%),
+    linear-gradient(145deg, rgba(124,255,79,.60), rgba(90,244,116,.52) 44%, rgba(86,239,199,.38) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 30px rgba(124,255,79,.24),
+    0 0 18px rgba(0,216,255,.10),
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -12px 18px rgba(0,0,0,.18) !important;
+}
+#buyBtn:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 42px rgba(124,255,79,.34),
+    0 0 22px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.09),
+    inset 0 -12px 18px rgba(0,0,0,.18) !important;
+}
+
+#emojiPickerBtn,
+#locateBtn,
+#carouselSearchBtn,
+#userSearchBtn,
+#addressSearchBtn,
+#addTierBtn,
+.save-event-btn,
+#saveEventBtn,
+[data-toggle-save],
+.floating-preview-actions [data-toggle-save],
+.host-card-actions [data-view-host-profile] {
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease, filter .18s ease !important;
+}
+#emojiPickerBtn:hover,
+#locateBtn:hover,
+#carouselSearchBtn:hover,
+#userSearchBtn:hover,
+#addressSearchBtn:hover,
+#addTierBtn:hover,
+.save-event-btn:hover,
+#saveEventBtn:hover,
+[data-toggle-save]:hover,
+[data-toggle-save].active,
+.host-card-actions [data-view-host-profile]:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 36px rgba(0,216,255,.30),
+    0 0 0 1px rgba(255,255,255,.14) inset,
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -10px 16px rgba(0,0,0,.20) !important;
+}
+
+
+/* CTA tone and event profile save-button treatment. */
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event],
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  color: #eaf9ff !important;
+  text-shadow: 0 0 6px rgba(0,216,255,.12) !important;
+}
+
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event] {
+  --edge-color: rgba(142,255,113,.94);
+  border-color: rgba(142,255,113,.76) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), transparent 22%),
+    linear-gradient(212deg, rgba(255,255,255,.05) 0 18%, transparent 18% 100%),
+    linear-gradient(38deg, rgba(0,216,255,.07) 0 12%, transparent 12% 34%, rgba(255,255,255,.04) 34% 36%, transparent 36% 58%, rgba(103,251,187,.07) 58% 76%, transparent 76% 100%),
+    linear-gradient(127deg, rgba(255,255,255,.035) 0 26%, transparent 26% 54%, rgba(137,255,99,.04) 54% 74%, transparent 74% 100%),
+    linear-gradient(145deg, rgba(157,255,77,.58) 0%, rgba(114,247,89,.52) 34%, rgba(132,251,131,.47) 48%, rgba(86,239,199,.42) 72%, rgba(99,218,248,.36) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 32px rgba(124,255,79,.28),
+    0 0 20px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.06),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+}
+.primary-btn:hover,
+.search-this-area-btn:hover,
+.standout-share:hover,
+#profileSaveBtn:hover,
+.navigation-cta:hover,
+.share-activity-btn:hover,
+[data-open-saved-event]:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(0,216,255,.16) !important;
+  box-shadow:
+    0 0 42px rgba(124,255,79,.34),
+    0 0 24px rgba(0,216,255,.14),
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+}
+
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  --edge-color: rgba(144,255,112,.98);
+  border-color: rgba(146,255,118,.82) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.14), transparent 22%),
+    linear-gradient(35deg, rgba(255,255,255,.05) 0 18%, transparent 18% 100%),
+    linear-gradient(145deg, rgba(124,255,79,.54), rgba(90,244,116,.47) 44%, rgba(86,239,199,.34) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 34px rgba(124,255,79,.28),
+    0 0 20px rgba(0,216,255,.10),
+    inset 0 8px 14px rgba(255,255,255,.07),
+    inset 0 -12px 18px rgba(0,0,0,.19) !important;
+}
+#buyBtn:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(0,216,255,.16) !important;
+  box-shadow:
+    0 0 44px rgba(124,255,79,.36),
+    0 0 24px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -12px 18px rgba(0,0,0,.19) !important;
+}
+
+/* Event profile save button should match the dark Google Maps button, not cyan */
+#saveEventBtn {
+  --edge-color: rgba(0,216,255,.60) !important;
+  color: var(--text-soft) !important;
+  text-shadow: none !important;
+  border-color: rgba(0,216,255,.24) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03) 38%, rgba(0,216,255,.05) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.055), inset 0 -8px 16px rgba(0,0,0,.12), 0 0 14px rgba(0,216,255,.08) !important;
+}
+#saveEventBtn:hover {
+  color: white !important;
+  border-color: rgba(0,216,255,.58) !important;
+  background: rgba(0,216,255,.075) !important;
+  box-shadow: 0 0 22px rgba(0,216,255,.20), var(--cyan-glow), inset 0 1px 0 rgba(255,255,255,.10) !important;
+}
+
+
+/* Unified holographic CTA color system. */
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event] {
+  color: #f1ffeb !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.12) !important;
+  --edge-color: rgba(142,255,113,.94);
+  border-color: rgba(142,255,113,.76) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), transparent 22%),
+    linear-gradient(212deg, rgba(255,255,255,.05) 0 18%, transparent 18% 100%),
+    linear-gradient(38deg, rgba(0,216,255,.08) 0 12%, transparent 12% 34%, rgba(255,255,255,.04) 34% 36%, transparent 36% 58%, rgba(103,251,187,.08) 58% 76%, transparent 76% 100%),
+    linear-gradient(127deg, rgba(255,255,255,.035) 0 26%, transparent 26% 54%, rgba(137,255,99,.06) 54% 74%, transparent 74% 100%),
+    linear-gradient(145deg, rgba(157,255,77,.28) 0%, rgba(114,247,89,.28) 34%, rgba(132,251,131,.28) 48%, rgba(86,239,199,.28) 72%, rgba(99,218,248,.28) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 32px rgba(124,255,79,.28),
+    0 0 20px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.06),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+}
+.primary-btn:hover,
+.search-this-area-btn:hover,
+.standout-share:hover,
+#profileSaveBtn:hover,
+.navigation-cta:hover,
+.share-activity-btn:hover,
+[data-open-saved-event]:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.16) !important;
+}
+
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  color: #f1ffeb !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.12) !important;
+  --edge-color: rgba(144,255,112,.98);
+  border-color: rgba(146,255,118,.82) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.14), transparent 22%),
+    linear-gradient(35deg, rgba(255,255,255,.05) 0 18%, transparent 18% 100%),
+    linear-gradient(145deg, rgba(124,255,79,.28), rgba(90,244,116,.28) 44%, rgba(86,239,199,.28) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 34px rgba(124,255,79,.28),
+    0 0 20px rgba(0,216,255,.10),
+    inset 0 8px 14px rgba(255,255,255,.07),
+    inset 0 -12px 18px rgba(0,0,0,.19) !important;
+}
+#buyBtn:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.16) !important;
+}
+
+/* Keep the event profile save button in the dark secondary style. */
+#saveEventBtn {
+  --edge-color: rgba(0,216,255,.60) !important;
+  color: var(--text-soft) !important;
+  text-shadow: none !important;
+  border-color: rgba(0,216,255,.24) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03) 38%, rgba(0,216,255,.05) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.055), inset 0 -8px 16px rgba(0,0,0,.12), 0 0 14px rgba(0,216,255,.08) !important;
+}
+#saveEventBtn:hover {
+  color: white !important;
+  text-shadow: none !important;
+  border-color: rgba(0,216,255,.58) !important;
+  background: rgba(0,216,255,.075) !important;
+  box-shadow: 0 0 22px rgba(0,216,255,.20), var(--cyan-glow), inset 0 1px 0 rgba(255,255,255,.10) !important;
+}
+
+
+/* Specific green CTA color alignment. */
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  color: #f1ffeb !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.12) !important;
+  --edge-color: rgba(142,255,113,.94) !important;
+  border-color: rgba(142,255,113,.76) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), transparent 22%),
+    linear-gradient(212deg, rgba(255,255,255,.05) 0 18%, transparent 18% 100%),
+    linear-gradient(38deg, rgba(0,216,255,.08) 0 12%, transparent 12% 34%, rgba(255,255,255,.04) 34% 36%, transparent 36% 58%, rgba(103,251,187,.08) 58% 76%, transparent 76% 100%),
+    linear-gradient(127deg, rgba(255,255,255,.035) 0 26%, transparent 26% 54%, rgba(137,255,99,.06) 54% 74%, transparent 74% 100%),
+    linear-gradient(145deg, rgba(157,255,77,.28) 0%, rgba(114,247,89,.28) 34%, rgba(132,251,131,.28) 48%, rgba(86,239,199,.28) 72%, rgba(99,218,248,.28) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 32px rgba(124,255,79,.28),
+    0 0 20px rgba(0,216,255,.12),
+    inset 0 8px 14px rgba(255,255,255,.06),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+#buyBtn:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.16) !important;
+  box-shadow:
+    0 0 42px rgba(124,255,79,.34),
+    0 0 24px rgba(0,216,255,.14),
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+}
+
+/* Keep CTA typography consistent across colors. */
+.primary-btn,
+.search-this-area-btn,
+.standout-share,
+#profileSaveBtn,
+.navigation-cta,
+.share-activity-btn,
+[data-open-saved-event],
+#buyBtn,
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host],
+.go-btn,
+.floating-preview-actions [data-floating-open],
+.floating-preview-actions [data-floating-go] {
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+
+/* Final green-cyan CTA color alignment. */
+#mapSearchBtn,
+#searchThisAreaBtn,
+#registerBtn,
+#authSubmit,
+#profileSaveBtn,
+#postFeedBtn,
+#buyBtn,
+#navigateBtn,
+.share-activity-btn,
+.navigation-cta,
+[data-open-saved-event],
+[data-navigate-event],
+[data-save-event],
+[data-open-checkins],
+[data-checkin-ticket-id],
+[data-friend-respond$=":accept"],
+.host-card-actions [data-follow-host],
+.social-profile-actions [data-follow-host] {
+  color: #f1ffeb !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.12) !important;
+  --edge-color: rgba(142,255,113,.94) !important;
+  border-color: rgba(142,255,113,.76) !important;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.16), transparent 22%),
+    linear-gradient(212deg, rgba(255,255,255,.05) 0 18%, transparent 18% 100%),
+    linear-gradient(38deg, rgba(0,216,255,.08) 0 12%, transparent 12% 34%, rgba(255,255,255,.045) 34% 36%, transparent 36% 58%, rgba(103,251,187,.08) 58% 76%, transparent 76% 100%),
+    linear-gradient(127deg, rgba(255,255,255,.035) 0 26%, transparent 26% 54%, rgba(137,255,99,.055) 54% 74%, transparent 74% 100%),
+    linear-gradient(145deg, rgba(47,142,124,.80) 0%, rgba(46,139,121,.74) 34%, rgba(48,148,117,.28) 52%, rgba(38,139,145,.28) 76%, rgba(33,132,156,.28) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.11) inset,
+    0 0 32px rgba(124,255,79,.20),
+    0 0 20px rgba(0,216,255,.16),
+    inset 0 8px 14px rgba(255,255,255,.06),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+#mapSearchBtn:hover,
+#searchThisAreaBtn:hover,
+#registerBtn:hover,
+#authSubmit:hover,
+#profileSaveBtn:hover,
+#postFeedBtn:hover,
+#buyBtn:hover,
+#navigateBtn:hover,
+.share-activity-btn:hover,
+.navigation-cta:hover,
+[data-open-saved-event]:hover,
+[data-navigate-event]:hover,
+[data-save-event]:hover,
+[data-open-checkins]:hover,
+[data-checkin-ticket-id]:hover,
+[data-friend-respond$=":accept"]:hover,
+.host-card-actions [data-follow-host]:hover,
+.social-profile-actions [data-follow-host]:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(124,255,79,.16) !important;
+  box-shadow:
+    0 0 42px rgba(124,255,79,.28),
+    0 0 24px rgba(0,216,255,.18),
+    inset 0 8px 14px rgba(255,255,255,.08),
+    inset 0 -12px 20px rgba(0,0,0,.19) !important;
+}
+
+/* Preserve the floating preview actions as the compact CTA reference. */
+.floating-preview-actions [data-floating-open],
+.floating-preview-actions [data-floating-go] {
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+

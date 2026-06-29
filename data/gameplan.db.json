@@ -1,0 +1,176 @@
+{
+  "users": [
+    {
+      "id": "oM1Cjpwz1m_HNxNJQsqwr",
+      "email": "demo@gameplan.local",
+      "name": "Demo User",
+      "role": "both",
+      "passwordHash": "$2a$10$PFhSl8AG3ZniYF7uPbfA7eIZLVRP87PGbeTHGw7/s1XtVcHlZZ3nS",
+      "profile": {
+        "bio": "Exploring plans around town.",
+        "location": "Fayetteville, AR",
+        "website": "",
+        "avatarUrl": "",
+        "bannerUrl": "",
+        "profileVisibility": "public",
+        "activityVisibility": "friends_only",
+        "eventsVisibility": "friends_only",
+        "defaultPostVisibility": "friends_only",
+        "locatorColor": "#00d8ff",
+        "themePreference": "dark"
+      },
+      "avatarUrl": "",
+      "createdAt": "2026-06-29T03:59:52.360Z"
+    },
+    {
+      "id": "Ploidz_ZlHncKflgXnRab",
+      "email": "host@gameplan.local",
+      "name": "Luma Social Club",
+      "role": "host",
+      "passwordHash": "$2a$10$ZtwMMu0PswRDAc1GuEq8dugE7KaqMO9qikzWVwD9HoRnFtg1qTBTe",
+      "profile": {
+        "bio": "Hosting nightlife and community events.",
+        "location": "Fayetteville, AR",
+        "website": "",
+        "avatarUrl": "",
+        "bannerUrl": "",
+        "profileVisibility": "public",
+        "activityVisibility": "friends_only",
+        "eventsVisibility": "friends_only",
+        "defaultPostVisibility": "friends_only",
+        "locatorColor": "#00d8ff",
+        "themePreference": "dark"
+      },
+      "avatarUrl": "",
+      "createdAt": "2026-06-29T03:59:52.434Z"
+    }
+  ],
+  "sessions": [],
+  "events": [
+    {
+      "id": "wEoBicZTSbZfu1Bq61hXU",
+      "hostId": "Ploidz_ZlHncKflgXnRab",
+      "hostName": "Luma Social Club",
+      "title": "Rooftop Latin Night",
+      "category": "Nightlife",
+      "description": "Reggaeton, Latin pop, mocktails, food trucks, and city-view photo spots.",
+      "locationName": "Luma Rooftop",
+      "address": "Dickson Street, Fayetteville, AR",
+      "lat": 36.0664,
+      "lng": -94.1621,
+      "startsAt": "2026-06-29T08:59:52.434Z",
+      "endsAt": "2026-06-29T12:59:52.434Z",
+      "ageRestriction": "18+",
+      "visibility": "public",
+      "capacity": 120,
+      "imageUrl": "/assets/gameplan-default.png",
+      "images": [
+        "/assets/gameplan-default.png"
+      ],
+      "createdAt": "2026-06-29T03:59:52.434Z",
+      "attendees": [],
+      "photos": [],
+      "inviteCode": "GP-ROOF",
+      "markerEmoji": "\ud83e\udea9",
+      "markerColor": "#ff4d6d",
+      "showTicketAvailability": true,
+      "ticketTiers": [
+        {
+          "id": "b5w1Pb8tQUGT4Qlr-FJU_",
+          "name": "Standard",
+          "priceCents": 1200,
+          "capacity": 80,
+          "sold": 0,
+          "description": "General admission"
+        },
+        {
+          "id": "lSx8c7OcuiXWKsjPkQy02",
+          "name": "VIP",
+          "priceCents": 2500,
+          "capacity": 30,
+          "sold": 0,
+          "description": "Priority entry + lounge"
+        },
+        {
+          "id": "m376-r-Jq0OJWOvZF-_6W",
+          "name": "SuperVIP",
+          "priceCents": 4500,
+          "capacity": 10,
+          "sold": 0,
+          "description": "Priority entry + lounge + reserved table"
+        }
+      ]
+    },
+    {
+      "id": "ZCIsaGFbsjmuxbWeoRPcy",
+      "hostId": "oM1Cjpwz1m_HNxNJQsqwr",
+      "hostName": "Demo User",
+      "title": "Indie Game Night",
+      "category": "Gaming",
+      "description": "Bring your laptop or controller. Indie games, casual bracket, and snacks.",
+      "locationName": "Student Union Game Lounge",
+      "address": "University of Arkansas, Fayetteville, AR",
+      "lat": 36.0687,
+      "lng": -94.174,
+      "startsAt": "2026-06-30T06:59:52.434Z",
+      "endsAt": "2026-06-30T10:59:52.434Z",
+      "ageRestriction": "All ages",
+      "visibility": "friends_only",
+      "capacity": 24,
+      "imageUrl": "/assets/gameplan-default.png",
+      "images": [
+        "/assets/gameplan-default.png"
+      ],
+      "createdAt": "2026-06-29T03:59:52.434Z",
+      "attendees": [],
+      "photos": [],
+      "inviteCode": "GP-GAME",
+      "markerEmoji": "\ud83c\udfae",
+      "markerColor": "#7CFF4F",
+      "showTicketAvailability": true,
+      "ticketTiers": [
+        {
+          "id": "PKcXjA-p5AeJVxQTZgpib",
+          "name": "Free RSVP",
+          "priceCents": 0,
+          "capacity": 24,
+          "sold": 0,
+          "description": "Free reservation"
+        }
+      ]
+    }
+  ],
+  "tickets": [],
+  "savedEvents": [],
+  "activity": [],
+  "friendships": [],
+  "hostFollows": [],
+  "posts": [
+    {
+      "id": "Rm_oHDP2jWkUmHKsIt1se",
+      "userId": "Ploidz_ZlHncKflgXnRab",
+      "authorName": "Luma Social Club",
+      "text": "Rooftop Latin Night is live on the map. VIP tiers are open.",
+      "visibility": "public",
+      "eventId": "wEoBicZTSbZfu1Bq61hXU",
+      "createdAt": "2026-06-29T03:59:52.434Z",
+      "reactions": [],
+      "comments": [],
+      "shares": [],
+      "type": "event"
+    },
+    {
+      "id": "zA_8oqiU_KDBbPFdeKxTG",
+      "userId": "oM1Cjpwz1m_HNxNJQsqwr",
+      "authorName": "Demo User",
+      "text": "Looking for people to join Indie Game Night.",
+      "visibility": "public",
+      "eventId": "ZCIsaGFbsjmuxbWeoRPcy",
+      "createdAt": "2026-06-29T03:59:52.434Z",
+      "reactions": [],
+      "comments": [],
+      "shares": [],
+      "type": "event"
+    }
+  ]
+}
