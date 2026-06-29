@@ -160,5 +160,5 @@ Before using this with real users, replace local JSON storage with PostgreSQL/Po
 All rights reserved. Portfolio/demo use only.
 
 <p align="center">
-  <img src="public/assets/gameplan-logo-title-banner.png" alt="GamePlan logo and title banner" width="760">
+  <img src="public/assets/WHITE BANNER.png" alt="GamePlan logo and title banner" width="760">
 </p>
