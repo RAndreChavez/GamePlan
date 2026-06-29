@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/assets/gameplan-default.png" alt="GamePlan main logo" width="360">
+  <img src="public/assets/BLACK BACKGROUND.png" alt="GamePlan main logo" width="360">
 </p>
 
 # GamePlan
