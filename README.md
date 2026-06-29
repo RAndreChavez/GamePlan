@@ -151,9 +151,18 @@ npm test
 
 The smoke test validates authentication, CSRF, profile updates, event creation, ticket tiers, friend requests, host follows, feed activity, saved events, navigation fallback, ticket purchase, wallet views, and host check-in.
 
-## Production considerations
+## Third-party acknowledgments
 
-Before using this with real users, replace local JSON storage with PostgreSQL/PostGIS, move uploads to object storage, add email verification, password reset, production session storage, audit logs, backups, image moderation, payment processing, webhook verification, monitoring, and a production deployment pipeline.
+GamePlan uses open-source libraries and public data/services for portfolio/demo purposes.
+
+- MapLibre GL JS is used for interactive map rendering and is licensed under the BSD 3-Clause License.
+- CARTO basemaps and OpenStreetMap contributors provide the map tile data displayed in the app. Map attribution is shown in the application map controls.
+- Nominatim/OpenStreetMap is used for demo address and city search.
+- OpenRouteService by HeiGIT is supported as an optional directions provider when an API key is configured. Route data should be attributed to openrouteservice.org by HeiGIT and OpenStreetMap contributors.
+- Google Fonts provides the Inter, Space Grotesk, and Rajdhani font families used in the interface.
+- Server-side dependencies are listed in package.json and package-lock.json and remain under their respective open-source licenses.
+
+GamePlan branding, UI design direction, screenshots, and project-specific code are provided as portfolio/demo material. All rights reserved. Portfolio/demo use only.
 
 ## License
 
